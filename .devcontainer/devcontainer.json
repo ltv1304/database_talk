@@ -1,0 +1,13 @@
+{
+  "name": "Spellchecker",
+  "image": "registry.toolbox.local:5000/spellchecker:latest",
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspace,type=bind"
+  ],
+  "workspaceFolder": "/workspace",
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-python.python", "ms-azuretools.vscode-docker"]
+    }
+  }
+}
