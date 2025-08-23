@@ -1,0 +1,142 @@
+\begin{frame}[fragile, t]
+  \begin{onlyenv}<1>
+    \vspace{2em}
+    \scalebox{0.7}{
+      % \fontsize{7}{9}\selectfont % Компактный шрифт
+      \begin{sequencediagram}
+        \tikzset{
+          inststyle/.append style={
+            drop shadow={opacity=1.0,fill=RNDSorange}
+          }
+        }
+        \newinst {app}{AbstractClient}
+        \newinst [1]{model}{ActiveRecord}
+        \newinst [3]{db}{PostgreSQL}
+        \newinst [1]{s3}{S3 storrage}
+        \begin{sdblock}{alt}{JSON in PostgreSQL}
+          \begin{call}{model}{SELECT id, data FROM record}{db}{42, \{"name": "Иван"\}}
+          \end{call}
+          \begin{call}{app}{model.datap['name']}{model}{"Иван"}
+            \begin{call}{model}{external?}{model}{false}
+            \end{call}
+          \end{call}
+        \end{sdblock}
+      \end{sequencediagram}   
+    }
+  \end{onlyenv}
+  \begin{onlyenv}<2>
+    \vspace{2em}
+    \scalebox{0.7}{
+      % \fontsize{7}{9}\selectfont % Компактный шрифт
+      \begin{sequencediagram}
+        \tikzset{
+          inststyle/.append style={
+            drop shadow={opacity=1.0,fill=RNDSorange}
+          },
+        }
+        \newinst {app}{AbstractClient}
+        \newinst [1]{model}{ActiveRecord}
+        \newinst [3]{db}{PostgreSQL}
+        \newinst [1]{s3}{S3 storrage}
+        \begin{sdblock}{alt}{JSON in S3 storrage}
+          \begin{call}{model}{SELECT id, data FROM record}{db}{\{"external": true, "uuid": "111"\}}
+          \end{call}
+          \begin{call}{app}{model.datap['name']}{model}{"Иван"}
+            \begin{call}{model}{external?}{model}{true}
+            \end{call}
+            \begin{call}{model}{GET /bucket/path/111.json}{s3}{\{"name": "Иван"\}}
+            \end{call}
+            \begin{call}{model}{Парсинг JSON в Hash}{model}{}
+            \end{call}
+          \end{call}
+        \end{sdblock}
+      \end{sequencediagram}   
+    }
+  \end{onlyenv}
+  \begin{onlyenv}<3>
+    \begin{tcblisting}{
+      listing engine=minted,
+      minted language=ruby,
+      minted options={fontsize=\footnotesize, linenos=true, numbersep=5pt},
+      colback=RNDScardBody,
+      colframe=RNDSorange,
+      listing only,
+      title=MaybeExternalHash,
+      fonttitle=\normalsize,
+    }
+class MaybeExternalHash < ActiveSupport::Hash
+  class ExternalHash
+    
+    def initialize(file)
+      @file = file
+    end
+    
+    def to_hash
+      @hash ||= JSON.load(@file)
+    end
+    
+    def query(path, &)
+      Parser.parse(@file, path)
+    end
+  end
+  \end{tcblisting}
+
+  \end{onlyenv}
+  \begin{onlyenv}<4>
+    \begin{tcblisting}{
+      listing engine=minted,
+      minted language=ruby,
+      minted options={fontsize=\footnotesize, linenos=true, numbersep=5pt},
+      colback=RNDScardBody,
+      colframe=RNDSorange,
+      listing only,
+      title=MaybeExternalHash,
+      fonttitle=\normalsize,
+    }
+class MaybeExternalHash < ActiveSupport::Hash
+
+  def download
+    return unless external?
+    file = Loader.get(external_uuid)
+    ExternalHash.new(file[:file])
+  end
+
+  def [](key)
+    if external?
+      get_data_from_external(key.to_s)
+    else
+      super
+    end
+  end
+  \end{tcblisting}
+
+  \end{onlyenv}
+  \begin{onlyenv}<5>
+    \begin{tcblisting}{
+      listing engine=minted,
+      minted language=ruby,
+      minted options={fontsize=\footnotesize, linenos=true, numbersep=5pt},
+      colback=RNDScardBody,
+      colframe=RNDSorange,
+      listing only,
+      title=MaybeExternalHash,
+      fonttitle=\normalsize,
+    }
+class MaybeExternalHash < ActiveSupport::Hash
+
+  def get_data_from_external(path)
+    return nil unless external?
+    @hash ||= self.download
+    value = @hash.query(path)
+  end
+
+  def external?
+    self.class.superclass.instance_method(:[]).bind(self).call(:external)
+  end
+
+  def external_uuid
+  end
+  \end{tcblisting}
+
+  \end{onlyenv}
+\end{frame}

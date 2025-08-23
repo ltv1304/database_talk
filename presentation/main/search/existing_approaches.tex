@@ -1,0 +1,54 @@
+\begin{frame}
+  % \vspace*{-0.5ex}
+  % {\fontsize{18}{21}\bfseries Векторный поиск: подходы\par}
+  % \vspace{1em} 
+  \begin{columns} 
+    \begin{column}{0.32\textwidth} 
+      \begin{minipage}[\textheight]{\linewidth}
+        \vspace{0.15\textheight} 
+        \begin{tikzpicture} 
+          \node[
+            fill=RNDScardBody, 
+            rounded corners=1em, 
+            minimum width=\linewidth, minimum height=\linewidth, 
+            align=center, 
+            font=\ttfamily\color{RNDSorange}\LARGE\bfseries] (mainnode)
+            {ILIKE}; 
+        \end{tikzpicture} 
+      \end{minipage} 
+    \end{column} 
+    \begin{column}{0.32\textwidth} 
+      \begin{minipage}[\textheight]{\linewidth} 
+        \vspace{0.15\textheight} 
+        \begin{tikzpicture} 
+          \node[
+            fill=RNDScardBody, 
+            rounded corners=1em, 
+            minimum width=\linewidth, minimum height=\linewidth, 
+            align=center, 
+            font=\ttfamily\color{RNDSorange}\LARGE\bfseries] (mainnode)
+            {tsvector};
+          \node[
+            star, star points=5, star point ratio=2.5, 
+            fill=RNDSorange, minimum size=1em, scale=0.8, 
+            anchor=north east, xshift=-1.5em, yshift=-1.5em
+          ] at (mainnode.north east) {};
+        \end{tikzpicture} 
+      \end{minipage} 
+    \end{column} 
+    \begin{column}{0.32\textwidth} 
+      \begin{minipage}[\textheight]{\linewidth} 
+        \vspace{0.15\textheight} 
+        \begin{tikzpicture} 
+          \node[
+            fill=RNDScardBody, 
+            rounded corners=1em, 
+            minimum width=\linewidth, minimum height=\linewidth, 
+            align=center, 
+            font=\ttfamily\color{RNDSorange}\LARGE\bfseries] (mainnode)
+           {pg\_trgm}; 
+        \end{tikzpicture} 
+      \end{minipage} 
+    \end{column} 
+  \end{columns} 
+\end{frame}

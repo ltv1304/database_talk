@@ -1,0 +1,20 @@
+\begin{frame}[fragile, t]
+    \begin{tcblisting}{
+      listing engine=minted,
+      minted language=sql,
+      colback=RNDScardBody,
+      colframe=RNDSorange,
+      listing only,
+      title=наивное ранжирование,
+      fonttitle=\normalsize,
+    }
+SELECT 
+  name, ts_rank(tsvector_data, plainto_tsquery('ivanov')) as rank
+FROM 
+  users
+WHERE 
+  tsvector_data @@ to_tsquery('ivanov')
+ORDER BY 
+  rank DESC;
+  \end{tcblisting}
+\end{frame}

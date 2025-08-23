@@ -1,0 +1,34 @@
+\RequirePackage{polyglossia}
+\RequirePackage{fontspec}
+% \RequirePackage[russian, english]{babel}
+% \RequirePackage{fontspec}
+\RequirePackage{tikz}
+\RequirePackage{pgfplots}
+\RequirePackage{pgf-umlsd}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{calc}
+\usepackage{xstring}
+\usetikzlibrary{shapes}
+\RequirePackage[outputdir=./tmp]{minted}
+\RequirePackage{tcolorbox}
+\tcbuselibrary{minted, listings}
+
+% Устанавливаем путь для ВСЕХ minted
+\makeatletter
+\def\minted@outputdir{./tmp/}
+\tcbset{
+  listing engine=minted,
+  minted options={
+    fontsize=\small,
+    linenos=false
+  }
+}
+\makeatother
+\RequirePackage{xcolor}
+\RequirePackage{booktabs}
+\RequirePackage{tabularx}
+\RequirePackage{enumitem}
+\RequirePackage[normalem]{ulem}
+\RequirePackage{svg}
+\svgsetup{inkscapepath=./tmp/svg-inkscape/}
+\usetikzlibrary{positioning}

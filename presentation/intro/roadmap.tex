@@ -1,0 +1,34 @@
+\begin{frame}
+  \begin{columns}
+    \begin{column}{0.48\textwidth}
+      \begin{minipage}[t][\textheight]{\linewidth}
+        % \vspace{1em}
+        % {\fontsize{18}{21}\bfseries План\par}
+        \vfill
+        \begin{tikzpicture}
+          \fill[RNDScardBody, rounded corners=1em] (-2em,-2em) rectangle (12em,12em);
+          \node at (5em,5em) {\includesvg[height=10em]{static/img/road_map.svg}};
+        \end{tikzpicture}
+        \vspace{1em}
+        \end{minipage}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{center}
+        \begin{itemize}[label=\RNDSmarker]
+          \item \vspace{0.5em} \textbf{Векторный поиск}\\
+            про полнотекстовый поиск
+          \item \vspace{0.5em} \textbf{Ряды} \\
+            как сохранить историю изменений чего угодно
+          \item \vspace{0.5em} \textbf{ExternalHash} \\
+            выбрасывем хлам из базы данных 
+        \end{itemize}
+      \end{center}
+    \end{column}
+  \end{columns}
+
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[fill=black, minimum height=1em, minimum width=0.5\paperwidth, anchor=south west, font=\ttfamily\color{green!70!black}\bfseries\large] 
+      at ([yshift=0em]current page.south west) {\hspace{-4em} \# follow the white rabbit...};
+
+  \end{tikzpicture}
+\end{frame}

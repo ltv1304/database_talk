@@ -1,0 +1,123 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemeRNDSPresa}%
+[2025/03/22 RNDS tech talck theme]
+
+
+%% define colors
+% RNDSPresa colors
+\definecolor{UMdarkblue}{RGB}{0,28,61}
+\definecolor{UMwhite}{RGB}{255,255,255}
+\definecolor{UMorangered}{RGB}{232,78,16}
+\definecolor{UMlightblue}{RGB}{0,162,219}
+\definecolor{UMorange}{RGB}{243,148,37}
+\definecolor{UMred}{RGB}{174,11,18}
+
+\definecolor{RNDSgreen}{HTML}{11B69E}
+% \definecolor{RNDSorange}{HTML}{ff6a00}
+% \definecolor{RNDSorange}{HTML}{B64911}
+\definecolor{RNDSorange}{HTML}{ff6b01}
+\definecolor{RNDScardBody}{HTML}{f6f6f6}
+\definecolor{RNDSblue}{HTML}{117EB6}
+\definecolor{RNDSyelow}{HTML}{B69C11}
+% other colors
+
+\definecolor{lightgrey}{cmyk}{0.1,0,0,0.5}
+
+%% set colors for basic elements
+\setbeamercolor{title}{fg=white} 
+\setbeamercolor{subtitle}{fg=UMdarkblue}
+\setbeamercolor{author}{fg=UMwhite}
+\setbeamercolor{institute}{fg=UMwhite}
+\setbeamercolor{date}{fg=UMwhite}
+
+
+\setbeamercolor{section in toc}{fg=white}
+\setbeamercolor{subsection in toc}{fg=white}
+
+
+% set bold font for titles
+
+\newfontfamily{\motserrat}{Montserrat}[
+    Path=./static/fonts/montserrat/,
+    Scale=1,
+    Extension = .ttf,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    ItalicFont=*-Italic,
+    BoldItalicFont=*-BoldItalic
+]
+
+
+% \setmainfont{Montserrat}
+\setsansfont{Montserrat}
+\usefonttheme[onlymath]{serif}
+
+
+\setbeamerfont{section in toc}{size=\footnotesize}
+\setbeamerfont{subsection in toc}{size=\footnotesize}
+
+\setbeamerfont{title}{family=\motserrat, series=\bfseries, size=\LARGE}
+\setbeamerfont{normal text}{family=\motserrat, size=\normalsize}
+\setbeamerfont{subtitle}{series=\bfseries}
+\setbeamerfont{frametitle}{series=\bfseries}
+\setbeamerfont{title in sidebar}{family=\motserrat, series=\bfseries}
+\setbeamerfont{author in sidebar}{family=\motserrat, series=\bfseries}
+\setbeamerfont{section in sidebar}{family=\motserrat, series=\bfseries}
+\setbeamerfont{subsection in sidebar}{family=\motserrat, series=\bfseries}
+\setbeamerfont{subsubsection in sidebar}{family=\motserrat, series=\bfseries}
+
+%% set theme
+\let\emph\textbf
+\useinnertheme{default}
+\useoutertheme{default}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{}
+
+
+
+\setbeamertemplate{title page}{%
+  \centering
+  {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle}
+}
+
+\newcommand{\RNDSmarker}{\includesvg[width=1em]{static/img/arrow.svg}}
+\newcommand{\RNDSmarkerGray}{\includesvg[width=1em]{static/img/arrow_gray.svg}}
+
+\setbeamertemplate{headline}{
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=3em,dp=2em]{}
+    \end{beamercolorbox}%
+  }
+  \begin{tikzpicture}[remember picture,overlay]
+    % Логотип справа
+    \node[anchor=north east, xshift=-3em, yshift=-2em] 
+      at (current page.north east) 
+      {\includegraphics[height=1em]{static/img/logo.png}};
+    
+    % Part и Subsection слева
+    \node[anchor=north west, xshift=4.3em, yshift=-3.4em] at (current page.north west) {
+      \parbox{\paperwidth}{%
+        {\Huge
+          \ifx\insertpart\empty
+            % Если part нет, выводим только subsection
+            {\fontsize{18}{21}\selectfont\bfseries\insertsection}
+          \else
+            % Если part есть, выводим part : subsection
+            {\fontsize{18}{21}\selectfont\bfseries\insertsection: \insertsubsection}
+          \fi
+        }
+      }
+    };
+  \end{tikzpicture}%
+}
+
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1ex,rightskip=2ex]{}
+      \usebeamerfont{footline}%
+      \hfill \insertframenumber{} / \inserttotalframenumber
+    \end{beamercolorbox}%
+  }%
+}

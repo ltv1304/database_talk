@@ -1,0 +1,26 @@
+\begin{frame}[fragile, t]
+    \begin{tcblisting}{
+      listing engine=minted,
+      minted language=sql,
+      colback=RNDScardBody,
+      colframe=RNDSorange,
+      listing only,
+      title=префиксный поиск,
+      fonttitle=\normalsize,
+    }
+SELECT to_tsvector('english', 'ivanov alexandr')  @@ 
+  to_tsquery('english', 'ivanov & alex') as result;
++--------+
+| result |
+|--------|
+| False  |
++--------+
+SELECT to_tsvector('english', 'ivanov alexandr')  @@ 
+  to_tsquery('english', 'ivanov & alex:*') as result;
++--------+
+| result |
+|--------|
+| True   |
++--------+
+  \end{tcblisting}
+\end{frame}

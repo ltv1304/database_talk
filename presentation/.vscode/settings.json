@@ -1,0 +1,44 @@
+{
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "latex-workshop.latex.outDir": "/workspaces/database_talk/presentation/tmp",
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.view.pdf.external.synctex.command": "evince",
+    "latex-workshop.view.pdf.external.synctex.args": [
+        "--synctex-forward",
+        "%LINE%:0:%TEX%",
+        "--pdf",
+        "%PDF%"
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "lualatex",
+            "tools": [
+                "lualatex",
+            ]
+        }
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "lualatex",
+            "command": "lualatex",
+            "env": { "PYTHONIOENCODING": "utf8", "LANG":"en_US.UTF-8" },
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-shell-escape",
+                "--output-dir=/workspaces/database_talk/presentation/tmp",
+                "%DOC%"
+            ],
+        },
+        {
+            "name": "biber",
+            "command": "biber",
+            "args": [
+                "%DOCFILE%"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,23 @@
+\begin{frame}[fragile, t]
+    \begin{tcblisting}{
+      listing engine=minted,
+      minted language=sql,
+      colback=RNDScardBody,
+      colframe=RNDSorange,
+      listing only,
+      title=pg\_trgm,
+      fonttitle=\normalsize,
+    }
+SELECT show_trgm('example');
+
++----------------------------------------------------------+
+| show_trgm                                                |
+|----------------------------------------------------------|
+| ['  e', ' ex', 'amp', 'exa', 'le ', 'mpl', 'ple', 'xam'] |
++----------------------------------------------------------+ 
+  \end{tcblisting}
+
+  \begin{equation}
+    \text{similarity}(a,b) = \frac{\text{общее количество уникальных триграмм}}{\text{количество общих триграмм}}
+  \end{equation}
+\end{frame}

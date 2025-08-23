@@ -1,0 +1,16 @@
+\begin{frame}[plain]
+  \begin{tikzpicture}[remember picture, overlay]
+    \node at (current page.center) {
+      \includegraphics[width=\textwidth, height=\paperheight]{static/img/roy_batty.png}
+    };
+    
+    \node[fill=black, opacity=0.7, text width=0.98\textwidth, 
+          minimum height=4em, align=center, text=white, font=\large\bfseries] 
+      at ([yshift=2em]current page.south) {All those moments will be lost in time, like tears in rain\\
+        but not your time-series data};
+
+    \node[anchor=south east] at ([xshift=-3em, yshift=0em]current page.south east) {
+      \includesvg[width=2em]{static/img/rabbit.svg}
+    };
+  \end{tikzpicture}
+\end{frame}

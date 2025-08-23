@@ -1,0 +1,60 @@
+\begin{frame}
+  \begin{columns} 
+    \begin{column}{0.32\textwidth} 
+      \begin{minipage}[\textheight]{\linewidth}
+        \vspace{0.15\textheight} 
+        \begin{tikzpicture} 
+          \node[
+            fill=RNDScardBody, 
+            rounded corners=1em, 
+            minimum width=\linewidth, minimum height=\linewidth, 
+            align=center, 
+            font=\ttfamily\color{RNDSorange}\LARGE\bfseries] (mainnode)
+            {Victoria\\Metrics};
+          \node[anchor=north east, xshift=3em, yshift=8] (icon) at (mainnode.north west) {
+            \includesvg[width=3em]{static/img/victoriametrics.svg}
+          }; 
+        \end{tikzpicture} 
+      \end{minipage} 
+    \end{column} 
+    \begin{column}{0.32\textwidth} 
+      \begin{minipage}[\textheight]{\linewidth} 
+        \vspace{0.15\textheight} 
+        \begin{tikzpicture} 
+          \node[
+            fill=RNDScardBody, 
+            rounded corners=1em, 
+            minimum width=\linewidth, minimum height=\linewidth, 
+            align=center, 
+            font=\ttfamily\color{RNDSorange}\LARGE\bfseries] (mainnode)
+            {InfluxDB};
+          \node[anchor=north east, xshift=3em, yshift=8] (icon) at (mainnode.north west) {
+            \includesvg[width=3em]{static/img/influxdb.svg}
+          };
+        \end{tikzpicture} 
+      \end{minipage} 
+    \end{column} 
+    \begin{column}{0.32\textwidth} 
+      \begin{minipage}[\textheight]{\linewidth} 
+        \vspace{0.15\textheight} 
+        \begin{tikzpicture} 
+          \node[
+            fill=RNDScardBody, 
+            rounded corners=1em, 
+            minimum width=\linewidth, minimum height=\linewidth, 
+            align=center, 
+            font=\ttfamily\color{RNDSorange}\LARGE\bfseries] (mainnode)
+           {TimescaleDB};
+           \node[
+            star, star points=5, star point ratio=2.5, 
+            fill=RNDSorange, minimum size=1em, scale=0.8, 
+            anchor=north east, xshift=-1.5em, yshift=-1.5em
+          ] at (mainnode.north east) {};
+          \node[anchor=north east, xshift=3em, yshift=8] (icon) at (mainnode.north west) {
+            \includesvg[width=3em]{static/img/timescale.svg}
+          }; 
+        \end{tikzpicture} 
+      \end{minipage} 
+    \end{column} 
+  \end{columns} 
+\end{frame}

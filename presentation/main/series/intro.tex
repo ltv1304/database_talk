@@ -1,0 +1,77 @@
+\begin{frame}
+  \begin{onlyenv}<1>
+    \begin{tikzpicture}
+      \node[
+        fill=RNDScardBody,
+        rounded corners=1em,
+        minimum width=\linewidth,
+        minimum height=0.3\textheight,
+        inner sep=1em
+      ] (timeline){};
+      
+      \begin{scope}[shift=(timeline.north west)]
+        \draw[thick,-] (0.5, -1) -- (13, -1);
+        \foreach \x/\date/\val in {
+          0/01.01.2025/156.42,
+          1/01.02.2025/287.15,
+          2/01.03.2025/432.78,
+          3/01.04.2025/673.29,
+          4/01.05.2025/824.56,
+          5/01.06.2025/345.91,
+          6/01.07.2025/912.34,
+          7/01.08.2025/198.75
+        } {
+          \draw (1+1.6*\x, -1) node[circle,fill=RNDSorange,inner sep=2pt] {};
+          \node[above, font=\tiny, align=center] at (1+1.6*\x, -0.7) {\date};
+          \node[below, font=\scriptsize] at (1+1.6*\x, -1.3) {\val};
+        }
+      \end{scope}
+
+      \node[
+        star, star points=5, star point ratio=2.5, 
+        fill=RNDSorange, minimum size=1em, scale=0.8, 
+        anchor=north east, xshift=-1.5em, yshift=-1.5em
+      ] at (timeline.north east) {};
+    \end{tikzpicture}
+    
+    \vspace{1em}
+
+    \begin{tikzpicture}
+      \node[
+        fill=RNDScardBody,
+        rounded corners=1em,
+        minimum width=\linewidth,
+        minimum height=0.4\textheight,
+        align=flush right,
+        inner sep=1em
+      ] (formulas) {
+        \begin{minipage}{0.85\linewidth}
+          \raggedleft
+          \begin{equation*}
+            f(x) = \frac{a_0}{2} + \sum_{n=1}^{\infty} \left( a_n \cos\frac{2\pi n x}{T} + b_n \sin\frac{2\pi n x}{T} \right)
+          \end{equation*}
+          \vspace{-1.5em}
+          \begin{equation*}
+            f(z) = \sum_{n=-\infty}^{\infty} a_n (z - z_0)^n = \frac{a_{-2}}{(z - z_0)^2} + \frac{a_{-1}}{z - z_0} + a_0 + a_1 (z - z_0) + \cdots
+          \end{equation*}
+        \end{minipage}
+      };
+      \node[
+        draw=gray,            % Цвет линии
+        cross out,            % Форма крестика
+        line width=0.5em,     % Толщина линии
+        minimum size=1em,     % Размер
+        scale=0.8,            % Масштаб
+        anchor=north east,    % Якорь
+        xshift=-1.5em,        % Смещение по X
+        yshift=-1.5em         % Смещение по Y
+      ] at (formulas.north east) {};
+    \end{tikzpicture}
+  \end{onlyenv}
+  \begin{onlyenv}<2>
+    \begin{figure}
+      \centering
+      \includegraphics[width=0.6\textwidth]{static/img/analyst.png}
+    \end{figure}
+  \end{onlyenv}
+\end{frame}

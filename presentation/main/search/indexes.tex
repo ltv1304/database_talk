@@ -1,0 +1,70 @@
+\begin{frame}
+  \begin{columns}
+    \begin{column}{0.45\textwidth}
+      \begin{minipage}[\textheight]{\linewidth}
+        \vspace{0.15\textheight}
+        \begin{tikzpicture}
+          \node[
+            fill=RNDScardBody,
+            rounded corners=1em,
+            minimum width=\linewidth,
+            minimum height=\linewidth,
+            inner sep=1em,
+            anchor=north west
+          ] (mainnode) at (0,0) {};
+          
+          \node[
+            anchor=north west,
+            text width=\dimexpr\linewidth-2em\relax,
+            xshift=1em,
+            yshift=-1em
+          ] at (mainnode.north west) {
+            {\color{RNDSorange}\LARGE\bfseries GIN\par}
+            \vspace{0.1\textheight}
+            \begin{itemize}[leftmargin=1em,itemsep=0.7em, label=\RNDSmarker]
+              \item очень быстрый (прямой доступ)
+              \item медленная вставка
+              \item точный поиск
+            \end{itemize}
+          };
+          \node[
+            star, star points=5, star point ratio=2.5, 
+            fill=RNDSorange, minimum size=1em, scale=0.8, 
+            anchor=north east, xshift=-1.5em, yshift=-1.5em
+          ] at (mainnode.north east) {};
+        \end{tikzpicture}
+      \end{minipage}
+    \end{column}
+
+    \begin{column}{0.45\textwidth}
+      \begin{minipage}[\textheight]{\linewidth}
+        \vspace{0.15\textheight}
+        \begin{tikzpicture}
+          \node[
+            fill=RNDScardBody,
+            rounded corners=1em,
+            minimum width=\linewidth,
+            minimum height=\linewidth,
+            inner sep=1em,
+            anchor=north west
+          ] (mainnode) at (0,0) {};
+          
+          \node[
+            anchor=north west,
+            text width=\dimexpr\linewidth-2em\relax,
+            xshift=1em,
+            yshift=-1em
+          ] at (mainnode.north west) {
+            {\color{RNDSorange}\LARGE\bfseries GiST\par}
+            \vspace{0.1\textheight}
+            \begin{itemize}[leftmargin=1em,itemsep=0.7em, label=\RNDSmarker]
+              \item быстрый (дерево поиска)
+              \item медленная вставка
+              \item возможны ложноположительные ответы (нужна проверка)
+            \end{itemize}
+          };
+        \end{tikzpicture}
+      \end{minipage}
+    \end{column}
+  \end{columns}
+\end{frame}

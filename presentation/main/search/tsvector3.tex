@@ -1,0 +1,19 @@
+\begin{frame}[fragile, t]
+    \begin{tcblisting}{
+      listing engine=minted,
+      minted language=sql,
+      colback=RNDScardBody,
+      colframe=RNDSorange,
+      listing only,
+      title=наивный подход,
+      fonttitle=\normalsize,
+    }
+SELECT 
+  id 
+FROM 
+  users 
+WHERE 
+  to_tsvector(jsonb_user_data::text) @@ 
+  plainto_tsquery('russian', 'Ivanov');
+  \end{tcblisting}
+\end{frame}

@@ -1,0 +1,15 @@
+\begin{frame}[plain]
+  \begin{tikzpicture}[remember picture, overlay]
+    \node at (current page.center) {
+      \includegraphics[keepaspectratio, height=\paperheight]{static/img/equilibrium.png}
+    };
+    
+    \node[fill=black, opacity=0.7, text width=0.98\textwidth, minimum width=\paperwidth,
+          minimum height=4em, align=center, text=white, font=\large\bfseries] 
+      at ([yshift=2em]current page.south) {Your database doesn't need to carry\\this emotional baggage};
+
+    \node[anchor=south east] at ([xshift=-0.5em, yshift=0em]current page.south east) {
+      \includesvg[width=2em]{static/img/rabbit.svg}
+    };
+  \end{tikzpicture}
+\end{frame}

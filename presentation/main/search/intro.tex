@@ -1,0 +1,42 @@
+\begin{frame}[fragile, t]
+  % \fontsize{18}{21}\bfseries Векторный поиск: введение\par
+  % \vspace{2em}
+  \begin{tcblisting}{
+    listing engine=minted,
+    minted language=sql,
+    colback=RNDScardBody,
+    colframe=RNDSorange,
+    listing only,
+    title=Шаблонный поиск,
+    fonttitle=\normalsize,
+  }
+  SELECT * FROM users WHERE name ILIKE '%John%';
+  \end{tcblisting}
+
+  \begin{tcblisting}{
+    listing engine=minted,
+    minted language=json,
+    colback=RNDScardBody,
+    colframe=RNDSorange,
+    listing only,
+    title=JSONB поле с данными пользователя,
+    fonttitle=\normalsize,
+  }
+  {
+    "name": "John Doe",
+    "age": 30,
+  }
+  \end{tcblisting}
+  
+  \begin{tcblisting}{
+    listing engine=minted,
+    minted language=sql,
+    colback=RNDScardBody,
+    colframe=RNDSorange,
+    listing only,
+    title=Шаблонный поиск в JSONB,
+    fonttitle=\normalsize,
+  }
+  SELECT * FROM items WHERE jsonb_user_data::text ILIKE '%John%';
+  \end{tcblisting}
+\end{frame}

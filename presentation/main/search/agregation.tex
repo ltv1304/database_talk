@@ -1,0 +1,25 @@
+\begin{frame}[fragile, t]
+    \begin{tcblisting}{
+      listing engine=minted,
+      minted language=ruby,
+      colback=RNDScardBody,
+      colframe=RNDSorange,
+      listing only,
+      title=сборка корпуса поиска,
+      fonttitle=\normalsize,
+    }
+full_text_searchable_by 
+  str_fields: [:user_id], 
+  rich_text_fields: [:notes],
+  json_fields: { 
+    personal_info: [:first_name, :last_name], 
+    contact_info: [:email, :phone] 
+  },
+  date_fields: [{personal_info: :birth_date}, :created_at]
+
+def full_searchable_text
+  (str_fields + rich_text_fields + json_fields + date_fields)
+  .select(&:present?).join(' ').downcase
+end
+  \end{tcblisting}
+\end{frame}

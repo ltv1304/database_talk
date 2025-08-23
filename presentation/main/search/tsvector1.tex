@@ -1,0 +1,47 @@
+\begin{frame}[fragile, t]
+  % \vspace*{-0.5ex}
+  % \fontsize{18}{21}\bfseries Векторный поиск: tsvector\par
+  \begin{onlyenv}<1>
+    \begin{tcblisting}{
+      listing engine=minted,
+      minted language=sql,
+      colback=RNDScardBody,
+      colframe=RNDSorange,
+      listing only,
+      title=to\_tsvector,
+      fonttitle=\normalsize,
+    }
+SELECT to_tsvector('This is a text search example with Postgres');
++-------------------------------------------+
+| to_tsvector                               |
+|-------------------------------------------|
+| 'databas':9 'engin':10 'name':2 'newbi':4 |
++-------------------------------------------+
+  \end{tcblisting}
+  \end{onlyenv}
+  \begin{onlyenv}<2>
+    \begin{tcblisting}{
+      listing engine=minted,
+      minted language=sql,
+      colback=RNDScardBody,
+      colframe=RNDSorange,
+      listing only,
+      title=tsquery,
+      fonttitle=\normalsize,
+    }
+SELECT plainto_tsquery('This is a text search example with Postgres');
++-----------------------------------------+
+| plainto_tsquery                         |
+|-----------------------------------------|
+| 'text' & 'search' & 'exampl' & 'postgr' |
++-----------------------------------------+
+
+SELECT phraseto_tsquery('This is a text search example with Postgres');
++-----------------------------------------------+
+| phraseto_tsquery                              |
+|-----------------------------------------------|
+| 'text' <-> 'search' <-> 'exampl' <2> 'postgr' |
++-----------------------------------------------+
+  \end{tcblisting}
+  \end{onlyenv}
+\end{frame}

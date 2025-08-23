@@ -1,0 +1,85 @@
+% !TEX root = /workplaces/database_talk/presentation/main.tex
+
+\documentclass[aspectratio=169]{beamer}
+\usepackage{import}
+
+\import{preamble/}{packages.tex}
+\import{preamble/}{base.tex}
+\import{preamble/}{plot_settings.tex}
+
+\title[ECC]{Занимательные практики использования базы данных PostgreSQL в RoR проектах}
+\author[RNDSOFT]{ltv1304@yandex.ru}
+\institute[]{RNDSOFT}
+\date[]{\today}
+
+\begin{document}
+  
+  \setbeamercolor{background canvas}{bg=RNDSorange} 
+  \begin{frame}[plain]
+    \centering
+    \begin{minipage}{\dimexpr\textwidth\relax}
+      \begin{tikzpicture}[remember picture, overlay]
+        \node[anchor=north east, xshift=1em, yshift=-1em] at (current page.north east) {
+          \includesvg[width=20em]{static/img/diamond.svg}
+        };
+      \end{tikzpicture}
+      
+      \centering
+      \titlepage
+    \end{minipage}
+  \end{frame}
+
+  \setbeamercolor{background canvas}{bg=white} 
+  \part{Введение}
+    \section{Литвинов Евгений}
+      \input{intro/speaker}
+    \section{План}
+      \input{intro/roadmap}
+
+  \part{Основная часть}
+    \section{Векторный поиск}
+      \subsection{введение}
+        \input{main/search/intro}
+      \subsection{подходы}
+        \input{main/search/existing_approaches}
+      \subsection{tsvector}
+        \input{main/search/tsvector1}
+        \input{main/search/tsvector2}
+        \input{main/search/tsvector3}
+      \subsection{где искать}
+        \input{main/search/agregation}
+      \subsection{индексы}
+        \input{main/search/indexes}
+      \subsection{префиксы}
+        \input{main/search/prefix_search}
+        \input{main/search/prefix_tradeoff}
+      \subsection{ранжирование}
+        \input{main/search/rank}
+      \subsection{pg\_trgm}
+        \input{main/search/pgtrgm}
+      \subsection{заключение}
+        \input{main/search/summary}
+    \section{Ряды}
+      \subsection{введение}
+        \input{main/series/intro}
+      \subsection{о чем речь}
+        \input{main/series/timeseries}
+      \subsection{tsdb}
+        \input{main/series/tsdb}
+      \subsection{timescaleDB}
+        \input{main/series/timescaledb}
+      \subsection{заключение}
+        \input{main/series/summary}
+    \section{ExternalHash}
+      \subsection{введение}
+        \input{main/external/intro}
+      \subsection{external hash}
+        \input{main/external/externalhash}
+      \subsection{реализация}
+        \input{main/external/realization}
+      \subsection{+/-}
+        \input{main/external/prosandcons}
+      \subsection{заключение}
+        \input{main/external/summary}
+
+\end{document}
