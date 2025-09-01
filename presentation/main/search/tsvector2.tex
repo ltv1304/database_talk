@@ -1,10 +1,27 @@
-\begin{frame}
-  \centering
-  \begin{tabular}{@{} l l}
-    {\bfseries\textcolor{RNDSorange} \&} & — логическое И (оба слова должны встречаться); \\
-    {\bfseries\textcolor{RNDSorange} |} & — логическое ИЛИ (любое из слов); \\
-    {\bfseries\textcolor{RNDSorange} !} & — отрицание (слово не должно встречаться); \\
-    {\bfseries\textcolor{RNDSorange} {\textless -\textgreater}} & — поиск слов рядом, в указанном порядке; \\
-    {\bfseries\textcolor{RNDSorange} {\textless N\textgreater}} & — поиск слов на расстоянии N слов друг от друга;
-  \end{tabular}
+\begin{frame}[fragile]
+      \begin{tcblisting}{
+      listing engine=minted,
+      minted language=sql,
+      colback=RNDScardBody,
+      colframe=RNDSorange,
+      listing only,
+      title=to\_tsvector,
+      fonttitle=\normalsize,
+    }
+SELECT to_tsquery('''Petrov Ivan'' & !Alexand:*');
++------------------------------------+
+| to_tsquery                         |
+|------------------------------------|
+| 'petrov' <-> 'ivan' & !'alexand':* |
++------------------------------------+
+  \end{tcblisting}
+  \begin{center}
+    \begin{tabular}{@{} l l}
+      {\bfseries\textcolor{RNDSorange} \&} & — логическое И (оба слова должны встречаться); \\
+      {\bfseries\textcolor{RNDSorange} |} & — логическое ИЛИ (любое из слов); \\
+      {\bfseries\textcolor{RNDSorange} !} & — отрицание (слово не должно встречаться); \\
+      {\bfseries\textcolor{RNDSorange} {\textless -\textgreater}} & — поиск слов рядом, в указанном порядке; \\
+      {\bfseries\textcolor{RNDSorange} {\textless N\textgreater}} & — поиск слов на расстоянии N слов друг от друга;
+    \end{tabular}
+  \end{center}
 \end{frame}
